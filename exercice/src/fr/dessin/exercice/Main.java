@@ -17,5 +17,11 @@ public class Main {
         point2.afficher();
 
         Point2D.getCompteur();
+        System.out.println(Point2D.getCompteur());
+
+        Point3D point3 = new Point3D(1, 2, 3);
+        point3.afficher();
+        point3.translate(1,2,3);
+        point3.afficher();
     }
 }

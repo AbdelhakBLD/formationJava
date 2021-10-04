@@ -7,14 +7,14 @@ public class Point2D {
     private Integer Y = 0;
 
     public Point2D() {
-        setX(0);
-        setY(0);
+        this.setX(0);
+        this.setY(0);
         Point2D.compteur += 1;
     }
 
     public Point2D(Integer vX, Integer vY) {
-        setX(vX);
-        setY(vY);
+        this.setX(vX);
+        this.setY(vY);
         Point2D.compteur += 1;
     }
 
@@ -31,7 +31,7 @@ public class Point2D {
     }
 
     public void setY(Integer y) {
-        Y = y;
+        this.Y = y;
     }
 
     /**
@@ -48,8 +48,8 @@ public class Point2D {
      * @param dY Integer
      */
     public void translate(Integer dX, Integer dY) {
-        setX(getX() + dX);
-        setY(getY() + dY);
+        this.setX(getX() + dX);
+        this.setY(getY() + dY);
     }
 
     public static Integer getCompteur() {
