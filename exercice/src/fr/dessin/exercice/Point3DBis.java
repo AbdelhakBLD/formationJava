@@ -23,7 +23,6 @@ public class Point3DBis {
         this.z = z;
     }
 
-    @Override
     public void afficher() {
         System.out.println("["
                 .concat(this.point2D.getX().toString())
