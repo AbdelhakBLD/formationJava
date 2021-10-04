@@ -25,11 +25,11 @@ public class Point3D extends Point2D{
     public void afficher() {
         System.out.println("["
                 .concat(getX().toString())
-                .concat(", "
-                        .concat(getY().toString()
-                                .concat(", ")
-                                .concat(getZ().toString())
-                                .concat("]"))));
+                .concat(", ")
+                .concat(getY().toString())
+                .concat(", ")
+                .concat(getZ().toString())
+                .concat("]"));
     }
 
     public void translate(Integer dX, Integer dY, Integer dZ) {
