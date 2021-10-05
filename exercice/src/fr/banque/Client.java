@@ -1,5 +1,6 @@
 package fr.banque;
 
+import java.sql.SQLOutput;
 import java.util.Arrays;
 
 public class Client {
@@ -19,7 +20,7 @@ public class Client {
     }
 
     public String getNom() {
-        return nom;
+        return this.nom;
     }
 
     public void setNom(String nom) {
@@ -27,7 +28,7 @@ public class Client {
     }
 
     public String getPrenom() {
-        return prenom;
+        return this.prenom;
     }
 
     public void setPrenom(String prenom) {
@@ -35,7 +36,7 @@ public class Client {
     }
 
     public Integer getAge() {
-        return age;
+        return this.age;
     }
 
     public void setAge(Integer age) {
@@ -43,7 +44,7 @@ public class Client {
     }
 
     public Integer getNumero() {
-        return numero;
+        return this.numero;
     }
 
     public void setNumero(Integer numero) {
@@ -51,24 +52,38 @@ public class Client {
     }
 
     public Compte[] getComptes() {
-        return comptes;
+        return this.comptes;
     }
 
     public void setComptes(Compte[] comptes) {
         this.comptes = comptes;
     }
 
+    public void setCompte(Compte unCompte, Integer index) {
+        this.comptes = comptes;
+    }
+
     public void ajouterCompte(Compte unCompte) {
-        //méthode qui regarde dans le tableau de compte et place
-        // le paramètre dans la première case vide (c.a.d null) du tableau.
-        // Dans le cas où il n'y a plus de case vide, afficher un message
+        for(int i = 0; i < this.getComptes().length; i++) {
+            if(this.getComptes()[i] == null) {
+                this.setCompte(unCompte, i);
+                break;
+            } else {
+                System.out.println("Compte plein !");
+            }
+        }
     }
 
     public Compte getCompte(Integer numeroCompte) {
-        //méthode qui parcours le tableau des comptes et donne le premier compte
-        // qui a comme numéro la valeur du paramètre. Dans le cas où
-        // vous ne trouvez aucun compte qui a le bon numéro, affichez un message.
-        // Attention, n'oubliez pas que votre tableau contient des null par défaut.
+        Compte compteCopy = null;
+        for (Compte compte : this.getComptes()) {
+                if(compte.getNumero() == numeroCompte) {
+                    compteCopy = compte;
+                } else {
+                    System.out.println("Compte inconnu !");
+                }
+        }
+        return compteCopy;
     }
 
     @Override
