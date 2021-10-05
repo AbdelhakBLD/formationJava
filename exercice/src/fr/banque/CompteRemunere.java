@@ -1,12 +1,15 @@
 package fr.banque;
 
-public class CompteRemunere extends Compte {
+public class CompteRemunere extends Compte implements ICompteRemunere{
 
-    private Double taux = 0.0;
+    private Double taux;
+
+    public CompteRemunere() {
+    }
 
     public CompteRemunere(Integer numero, Double solde, Double taux) {
         super(numero, solde);
-        this.setTaux(taux);
+        this.taux = taux;
     }
 
     public Double getTaux() {
@@ -14,25 +17,27 @@ public class CompteRemunere extends Compte {
     }
 
     public void setTaux(Double taux) {
-        if (taux <= 0 && taux <= 1) {
+        if (taux >= 0 && taux <= 1) {
             this.taux = taux;
-        }else{
-            System.out.println("mauvais taux");
+        } else {
+            System.out.println("taux incorrect");
         }
-    }
-
-    private Double calculerInterets() {
-        return this.getSolde() * this.getTaux();
-    }
-
-    public void verserInterets() {
-        this.ajouter(this.calculerInterets());
     }
 
     @Override
     public String toString() {
         return "CompteRemunere{" +
-                "taux=" + taux +
+                "numero=" + this.getNumero() +
+                ", solde=" + this.getSolde() +
+                ", taux=" + taux +
                 '}';
+    }
+
+    public Double calculerInterets() {
+        return this.getTaux()*this.getSolde();
+    }
+
+    public void verserInterets() {
+        this.ajouter(this.calculerInterets());
     }
 }

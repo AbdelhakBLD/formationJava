@@ -5,9 +5,20 @@ public class Compte {
     private Integer numero;
     private Double solde;
 
+    public Compte() {
+    }
+
     public Compte(Integer numero, Double solde) {
-        this.setNumero(numero);
-        this.setSolde(solde);
+        this.numero = numero;
+        this.solde = solde;
+    }
+
+    @Override
+    public String toString() {
+        return "Compte{" +
+                "numero=" + numero +
+                ", solde=" + solde +
+                '}';
     }
 
     public Integer getNumero() {
@@ -26,19 +37,11 @@ public class Compte {
         this.solde = solde;
     }
 
-    @Override
-    public String toString() {
-        return "Compte{" +
-                "numero=" + numero +
-                ", solde=" + solde +
-                '}';
-    }
-
     public void ajouter(Double unMontant) {
-        this.setSolde(this.getSolde() + unMontant);
+        this.solde += unMontant;
     }
 
-    public void retirer( double unMontant) {
-        this.setSolde(this.getSolde() - unMontant);
+    public void retirer(Double unMontant) {
+        this.solde -= unMontant;
     }
 }

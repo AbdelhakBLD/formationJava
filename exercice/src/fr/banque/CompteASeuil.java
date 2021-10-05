@@ -2,35 +2,42 @@ package fr.banque;
 
 import java.sql.SQLOutput;
 
-public class CompteASeuil extends Compte {
+public class CompteASeuil extends Compte implements ICompteASeuil {
 
     private Double seuil;
 
-    public CompteASeuil(Integer numero, Double solde, Double seuil) {
-        super(numero, solde);
-        this.setSeuil(seuil);
-    }
-
     public Double getSeuil() {
-        return seuil;
+        return this.seuil;
     }
 
     public void setSeuil(Double seuil) {
         this.seuil = seuil;
     }
 
-    public void retirer(Double uneValeur) {
-        if((this.getSolde() - uneValeur) > this.getSeuil()) {
-            super.retirer(uneValeur);
-        }else {
-            System.out.println("Sold du compte trop bas");
-        }
+    public CompteASeuil() {
+    }
+
+    public CompteASeuil(Integer numero, Double solde, Double seuil) {
+        super(numero, solde);
+        this.seuil = seuil;
     }
 
     @Override
     public String toString() {
         return "CompteASeuil{" +
+                "numero=" + this.getNumero() +
+                ", solde=" + this.getSolde() +
                 "seuil=" + seuil +
                 '}';
+    }
+
+    @Override
+    public void retirer(Double unMontant) {
+        if(this.getSolde()-unMontant > this.getSeuil()){
+            super.retirer(unMontant);
+        }else{
+            System.out.println("Impossible de retirer de l'argent. Veuillez alimenter votre compte.");
+        }
+
     }
 }
