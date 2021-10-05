@@ -11,12 +11,11 @@ public class Client {
     private Integer numero;
     private Compte[] comptes = new Compte [5];
 
-    public Client(String nom, String prenom, Integer age, Integer numero, Compte[] comptes) {
+    public Client(String nom, String prenom, Integer age, Integer numero) {
         this.setNom(nom);
         this.setPrenom(prenom);
         this.setAge(age);
         this.setNumero(numero);
-        this.setComptes(comptes);
     }
 
     public String getNom() {
@@ -77,7 +76,7 @@ public class Client {
     public Compte getCompte(Integer numeroCompte) {
         Compte compteCopy = null;
         for (Compte compte : this.getComptes()) {
-                if(compte.getNumero() == numeroCompte) {
+                if(compte.getNumero().equals(numeroCompte)) {
                     compteCopy = compte;
                 } else {
                     System.out.println("Compte inconnu !");
