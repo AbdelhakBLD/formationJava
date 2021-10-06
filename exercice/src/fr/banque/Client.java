@@ -78,38 +78,41 @@ public class Client {
 
     /**
      * Permet d'ajouter un compte à notre liste de comptes
+     *
      * @param unCompte
      */
-    public void ajouterCompte(Compte unCompte) {
+    public void ajouterCompte(Compte unCompte) throws BanqueException {
         Boolean addCompte = false;
-        for (int i=0; i < this.getComptes().length; i++){
-            if(this.getComptes()[i] == null){
+        for (int i = 0; i < this.getComptes().length; i++) {
+            if (this.getComptes()[i] == null) {
                 this.getComptes()[i] = unCompte;
                 addCompte = true;
                 break;
             }
         }
-        if(!addCompte)
-            System.out.println("Vous avez le max de compte.");
+        if (!addCompte) {
+//          System.out.println("Vous avez le max de compte.");
+            throw new BanqueException("Vous avez le max de compte.");
+        }
     }
 
     /**
      * Permet de récuperer un compte avec son numéro de compte
+     *
      * @param numeroCompte
      * @return Compte
-     *
      */
     public Compte getCompte(Integer numeroCompte) {
         Compte compteCopy = null;
         for (Compte compte : this.getComptes()) {
             if (compte != null) {
-                if(compte.getNumero().doubleValue() == numeroCompte) {
+                if (compte.getNumero().doubleValue() == numeroCompte) {
                     compteCopy = compte;
                     break;
                 }
             }
         }
-        if(compteCopy == null) {
+        if (compteCopy == null) {
             System.out.println("compte inconnu !");
         }
         return compteCopy;

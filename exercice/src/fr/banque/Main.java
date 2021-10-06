@@ -7,9 +7,28 @@ public class Main {
         Compte cas = new CompteASeuil(124, 200d, 100d);
         Compte cr = new CompteRemunere(352, 60000d, 0.2);
         Compte cras = new CompteASeuilRemunere(555, 60000d, 0.2, 20000d);
-        antoine.ajouterCompte(cas);
-        antoine.ajouterCompte(cr);
-        antoine.ajouterCompte(cras);
+
+        try {
+            antoine.ajouterCompte(cas);
+        } catch (BanqueException e) {
+            e.printStackTrace();
+        }
+        try {
+            antoine.ajouterCompte(cr);
+        } catch (BanqueException e) {
+            e.printStackTrace();
+        }
+        try {
+            antoine.ajouterCompte(cr);
+        } catch (BanqueException e) {
+            e.printStackTrace();
+        }
+        try {
+            antoine.ajouterCompte(cras);
+        } catch (BanqueException e) {
+            e.printStackTrace();
+        }
+
 //        System.out.println("CAS");
 //        antoine.getCompte(124).retirer(150d);
 //        antoine.getCompte(124).ajouter(500d);
@@ -23,7 +42,12 @@ public class Main {
 //        System.out.println(antoine.getCompte(352).getSolde());
 
         Double solde = antoine.getCompte(555).getSolde();
-        antoine.getCompte(555).retirer(15000d);
+        try {
+            antoine.getCompte(555).retirer(15000d);
+        } catch (BanqueException e) {
+            e.printStackTrace();
+        }
+
         System.out.println(antoine.getCompte(555).getSolde());
         CompteRemunere T = (CompteRemunere) antoine.getCompte(555);
         T.verserInterets();
