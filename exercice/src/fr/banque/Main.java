@@ -8,26 +8,26 @@ public class Main {
         Compte cr = new CompteRemunere(352, 60000d, 0.2);
         Compte cras = new CompteASeuilRemunere(555, 60000d, 0.2, 20000d);
 
-        try {
-            antoine.ajouterCompte(cas);
-        } catch (BanqueException e) {
-            e.printStackTrace();
-        }
-        try {
-            antoine.ajouterCompte(cr);
-        } catch (BanqueException e) {
-            e.printStackTrace();
-        }
-        try {
-            antoine.ajouterCompte(cr);
-        } catch (BanqueException e) {
-            e.printStackTrace();
-        }
-        try {
-            antoine.ajouterCompte(cras);
-        } catch (BanqueException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            antoine.ajouterCompte(cas);
+//        } catch (BanqueException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            antoine.ajouterCompte(cr);
+//        } catch (BanqueException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            antoine.ajouterCompte(cr);
+//        } catch (BanqueException e) {
+//            e.printStackTrace();
+//        }
+//        try {
+//            antoine.ajouterCompte(cras);
+//        } catch (BanqueException e) {
+//            e.printStackTrace();
+//        }
 
 //        System.out.println("CAS");
 //        antoine.getCompte(124).retirer(150d);

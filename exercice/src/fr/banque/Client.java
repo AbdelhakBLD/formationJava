@@ -1,15 +1,14 @@
 package fr.banque;
 
-import java.sql.SQLOutput;
-import java.util.Arrays;
+import java.util.*;
 
 public class Client {
-
     String nom;
     String prenom;
     Integer age;
     Integer numero;
-    Compte[] comptes = new Compte[5];
+    //    Compte[] comptes = new Compte[5];
+    private Map<Integer, Compte> listeCompte = new HashMap<Integer, Compte>();
 
     //region Contructeurs
     public Client() {
@@ -56,14 +55,15 @@ public class Client {
         this.numero = numero;
     }
 
-    public Compte[] getComptes() {
-        return comptes;
+    public Map<Integer, Compte> getListeCompte() {
+        return listeCompte;
     }
 
-    public void setComptes(Compte[] comptes) {
-        this.comptes = comptes;
+    public void setListeCompte(Map<Integer, Compte> listeCompte) {
+        this.listeCompte = listeCompte;
     }
-    //endregion
+
+//endregion
 
     @Override
     public String toString() {
@@ -72,28 +72,18 @@ public class Client {
                 ", prenom='" + prenom + '\'' +
                 ", age=" + age +
                 ", numero=" + numero +
-                ", comptes=" + Arrays.toString(comptes) +
+                ", listeCompte=" + listeCompte +
                 '}';
     }
+
 
     /**
      * Permet d'ajouter un compte à notre liste de comptes
      *
      * @param unCompte
      */
-    public void ajouterCompte(Compte unCompte) throws BanqueException {
-        Boolean addCompte = false;
-        for (int i = 0; i < this.getComptes().length; i++) {
-            if (this.getComptes()[i] == null) {
-                this.getComptes()[i] = unCompte;
-                addCompte = true;
-                break;
-            }
-        }
-        if (!addCompte) {
-//          System.out.println("Vous avez le max de compte.");
-            throw new BanqueException("Vous avez le max de compte.");
-        }
+    public void ajouterCompte(Compte unCompte) {
+        this.getListeCompte().put(unCompte.getNumero(), unCompte);
     }
 
     /**
@@ -104,12 +94,10 @@ public class Client {
      */
     public Compte getCompte(Integer numeroCompte) {
         Compte compteCopy = null;
-        for (Compte compte : this.getComptes()) {
-            if (compte != null) {
-                if (compte.getNumero().doubleValue() == numeroCompte) {
-                    compteCopy = compte;
-                    break;
-                }
+        for (Map.Entry<Integer, Compte> compte : listeCompte.entrySet()) {
+            if (compte.getValue().getNumero().doubleValue() == numeroCompte) {
+                compteCopy = compte.getValue();
+                break;
             }
         }
         if (compteCopy == null) {
@@ -117,4 +105,20 @@ public class Client {
         }
         return compteCopy;
     }
+
+//    public Compte getCompte(Integer numeroCompte) {
+//        Compte compteCopy = null;
+//        for (Compte compte : this.getComptes()) {
+//            if (compte != null) {
+//                if (compte.getNumero().doubleValue() == numeroCompte) {
+//                    compteCopy = compte;
+//                    break;
+//                }
+//            }
+//        }
+//        if (compteCopy == null) {
+//            System.out.println("compte inconnu !");
+//        }
+//        return compteCopy;
+//    }
 }
