@@ -36,11 +36,11 @@ public class NomPrenomReader {
     }
 
     public static List<String> readNom() throws IOException {
-        return readFichier("exercice/src/fr/io/nom.txt");
+        return readFichier("src/fr/io/nom.txt");
 
     }
 
     public static List<String> readPrenom() throws IOException {
-        return readFichier("exercice/src/fr/io/prenom.txt");
+        return readFichier("src/fr/io/prenom.txt");
     }
 }
