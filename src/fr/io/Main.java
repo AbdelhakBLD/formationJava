@@ -19,7 +19,7 @@ public class Main {
             System.out.println("nom : " + nom);
         });
 
-        UtilisateurWriter.writeUtilisateur("exercice/src/fr/io/resultat.txt",nomList,prenomList,15);
+        UtilisateurWriter.writeUtilisateur("exercice/src/fr/io/resultat.csv",nomList,prenomList,15);
     }
 }
 
